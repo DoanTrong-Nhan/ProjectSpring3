@@ -1,12 +1,18 @@
 package spring.api.springcore.dto.request;
 
+import jakarta.validation.constraints.Size;
+import spring.api.springcore.exception.ErrorCode;
+
 import java.time.LocalDate;
 
 public class UserCreationRequest {
+    @Size(min = 3, message = "USERNAME_INVALID")
     private String username;
+    @Size(min = 8, message = "INVALID_PASSWORD")
     private String password;
     private String firstName;
     private String lastName;
+
     private LocalDate dob;
 
     public String getUsername() {
