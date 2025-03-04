@@ -1,10 +1,7 @@
-package spring.api.springcore.dto.request;
+package spring.api.springcore.dto.request.response;
 
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import spring.api.springcore.exception.ErrorCode;
-
 import java.time.LocalDate;
 
 @Data
@@ -12,14 +9,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserCreationRequest {
-    @Size(min = 3, message = "USERNAME_INVALID")
+public class UserResponse {
+
+     String id;
      String username;
-    @Size(min = 8, message = "INVALID_PASSWORD")
      String password;
      String firstName;
      String lastName;
-
      LocalDate dob;
-
 }
