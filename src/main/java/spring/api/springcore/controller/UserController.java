@@ -1,5 +1,6 @@
 package spring.api.springcore.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import spring.api.springcore.dto.request.UserCreationRequest;
@@ -16,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping()
-    User createUser(@RequestBody UserCreationRequest request) {
+    User createUser(@RequestBody @Valid UserCreationRequest request) {
        return userService.createRequest(request);
     }
 
