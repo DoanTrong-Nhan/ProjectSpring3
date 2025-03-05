@@ -11,5 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthenticationResponse {
+    String token;
     boolean authenticated;
 }
