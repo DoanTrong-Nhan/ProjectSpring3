@@ -1,12 +1,13 @@
 package spring.api.springcore.exception;
 
 public enum ErrorCode {
-    UNCATEGORIZE_EXCEPTION(9999,"Uncategorized existed"),
+    UNCATEGORIZED_EXCEPTION(9999, "Uncategorized error"),
     INVALID_KEY(1001,"Invalid message key"),
     USER_EXISTED(1002,"User existed"),
     USERNAME_INVALID(1003,"username must at least 3 characters"),
     INVALID_PASSWORD(1004,"Password must be at least 6 characters"),
-    USER_NOT_EXISTED(1002,"User not existed"),
+    USER_NOT_EXISTED(1005,"User not existed"),
+    UNAUTHENTICATED(1006,"User unauthenticated")
 
     ;
 
