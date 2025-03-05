@@ -11,11 +11,13 @@ import spring.api.springcore.dto.request.UserCreationRequest;
 import spring.api.springcore.dto.request.UserUpdateRequest;
 import spring.api.springcore.dto.request.response.UserResponse;
 import spring.api.springcore.entity.User;
+import spring.api.springcore.enums.Role;
 import spring.api.springcore.exception.AppException;
 import spring.api.springcore.exception.ErrorCode;
 import spring.api.springcore.mapper.UserMapper;
 import spring.api.springcore.repository.UserRepository;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -26,14 +28,20 @@ public class UserService {
      UserRepository userRepository;
      UserMapper userMapper;
 
+     PasswordEncoder passwordEncoder;
+
     public User createRequest(UserCreationRequest request) {
 
         if (userRepository.existsByUsername(request.getUsername()))
             throw new RuntimeException("ErrorCode.USER_EXISTED");
 
         User user = userMapper.toUser(request);
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        HashSet<String> roles = new HashSet<>();
+        roles.add(Role.USER.name());
+        user.setRoles(roles);
 
         return userRepository.save(user);
     }
